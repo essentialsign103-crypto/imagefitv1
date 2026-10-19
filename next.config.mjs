@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  distDir: ".next-build",
+  distDir: ".next",
   experimental: {
     cpus: 1,
   },
