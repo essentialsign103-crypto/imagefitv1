@@ -27,7 +27,8 @@ imagefit/
 │   ├── tools/
 │   │   ├── image-compressor/page.tsx  # Compressor tool page (Milestone 2)
 │   │   ├── image-resizer/page.tsx     # Resizer tool page (Milestone 3)
-│   │   └── image-converter/page.tsx   # Converter tool page (Milestone 4)
+│   │   ├── image-converter/page.tsx   # Converter tool page (Milestone 4)
+│   │   └── background-studio/page.tsx # Background Studio tool page (Milestone 7)
 │   ├── guides/
 │   │   ├── page.tsx                   # Guide index (Milestone 5)
 │   │   ├── reduce-image-size/page.tsx
@@ -42,11 +43,12 @@ imagefit/
 │   ├── brand/                         # Original SVG Logo and Brand Mark
 │   ├── layout/                        # Header, Footer, MobileNav
 │   ├── upload/                        # UploadDropzone & FileStatus
+│   ├── studio/                        # Background Studio UI & Canvas Workspace
 │   └── ui/                            # Buttons, Badges, Cards
 ├── lib/
 │   ├── constants/                     # Presets, limits, supported MIME types
 │   ├── utils/                         # File formatting, size calculations
-│   └── image-processing/              # Compressor, resizer, converter engines
+│   └── image-processing/              # Compressor, resizer, converter, studio engines
 ├── docs/                              # Project architecture, specs, QA
 └── public/
     └── icons/                         # Favicons and web app manifests

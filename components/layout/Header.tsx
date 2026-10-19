@@ -33,6 +33,7 @@ export function Header() {
     { label: "Compress", href: "/tools/image-compressor", badge: "Target Size" },
     { label: "Resize", href: "/tools/image-resizer" },
     { label: "Convert", href: "/tools/image-converter" },
+    { label: "Studio", href: "/tools/background-studio", badge: "AI" },
     { label: "Guides", href: "/guides" },
     { label: "Upgrade", href: "/upgrade", badge: "Preview" },
     { label: "About", href: "/about" },
@@ -53,7 +54,7 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3.5 py-1.5 text-sm font-medium rounded-md transition-colors relative flex items-center gap-1.5 ${
+                  className={`px-3.5 py-2 text-base font-medium rounded-md transition-colors relative flex items-center gap-1.5 ${
                     isActive
                       ? "text-cobalt bg-cobalt/5 font-semibold"
                       : "text-slate hover:text-ink hover:bg-cloud"
@@ -61,7 +62,7 @@ export function Header() {
                 >
                   {link.label}
                   {link.badge && (
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-cobalt/10 text-cobalt">
+                    <span className="text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-cobalt/10 text-cobalt">
                       {link.badge}
                     </span>
                   )}
@@ -78,10 +79,10 @@ export function Header() {
 
           {/* Privacy badge */}
           <div
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-success-light text-success border border-success/20"
+            className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-semibold rounded-full bg-success-light text-success border border-success/20"
             title="All image files are processed locally in your browser memory"
           >
-            <ShieldCheck className="w-3.5 h-3.5 text-success" />
+            <ShieldCheck className="w-4 h-4 text-success" />
             <span>Local Browser Processing</span>
           </div>
 
@@ -101,13 +102,13 @@ export function Header() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden border-b border-border bg-white px-4 pt-2 pb-6 space-y-2 animate-in fade-in slide-in-from-top-2 duration-150">
-          <div className="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-cloud text-xs text-slate mb-3">
+          <div className="flex items-center justify-between gap-2 p-3 rounded-xl bg-cloud text-sm text-slate mb-3">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-success flex-shrink-0" />
               <span>Files stay on your device. Zero uploads.</span>
             </div>
-            <div className="flex items-center gap-1 pl-2 border-l border-border">
-              <span className="text-[11px] font-semibold text-slate">Theme:</span>
+            <div className="flex items-center gap-1.5 pl-2.5 border-l border-border">
+              <span className="text-xs font-semibold text-slate">Theme:</span>
               <ThemeToggle />
             </div>
           </div>
@@ -118,7 +119,7 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3 py-2.5 rounded-lg text-base font-medium flex items-center justify-between transition-colors ${
+                  className={`px-3.5 py-3 rounded-xl text-lg font-medium flex items-center justify-between transition-colors ${
                     isActive
                       ? "text-cobalt bg-cobalt/10 font-semibold"
                       : "text-ink hover:bg-cloud"
@@ -126,7 +127,7 @@ export function Header() {
                 >
                   <span>{link.label}</span>
                   {link.badge && (
-                    <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cobalt/10 text-cobalt">
+                    <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-cobalt/10 text-cobalt">
                       {link.badge}
                     </span>
                   )}
@@ -136,13 +137,13 @@ export function Header() {
             <div className="pt-2 border-t border-border mt-2">
               <Link
                 href="/privacy"
-                className="px-3 py-2 rounded-lg text-sm text-slate hover:text-ink block"
+                className="px-3.5 py-2.5 rounded-xl text-base text-slate hover:text-ink block"
               >
                 Privacy Statement
               </Link>
               <Link
                 href="/contact"
-                className="px-3 py-2 rounded-lg text-sm text-slate hover:text-ink block"
+                className="px-3.5 py-2.5 rounded-xl text-base text-slate hover:text-ink block"
               >
                 Contact & Feedback
               </Link>

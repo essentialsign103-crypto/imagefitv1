@@ -257,7 +257,7 @@ export function ImageCompressor() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-8">
+    <div className="w-full max-w-5xl mx-auto space-y-8">
       {/* 1. File Upload / Selection Stage */}
       {!selectedImage ? (
         <div
@@ -283,7 +283,7 @@ export function ImageCompressor() {
           }}
           role="button"
           tabIndex={0}
-          className={`relative cursor-pointer rounded-2xl border-2 border-dashed p-8 sm:p-14 text-center bg-white shadow-card hover:shadow-elevated transition-all group focus-within:ring-2 focus-within:ring-cobalt ${
+          className={`relative cursor-pointer rounded-2xl border-2 border-dashed p-10 sm:p-16 text-center bg-white shadow-card hover:shadow-elevated transition-all group focus-within:ring-2 focus-within:ring-cobalt ${
             isDragOver
               ? "border-cobalt bg-cobalt/5 scale-[1.01]"
               : "border-border-strong hover:border-cobalt/60 hover:bg-cloud/50"
@@ -307,20 +307,20 @@ export function ImageCompressor() {
             <div className="w-16 h-16 rounded-2xl bg-cobalt/10 text-cobalt flex items-center justify-center group-hover:scale-105 transition-transform">
               <UploadCloud className="w-8 h-8 stroke-[2.2]" />
             </div>
-            <div className="space-y-1">
-              <p className="text-lg sm:text-xl font-heading font-bold text-ink">
+            <div className="space-y-1.5">
+              <p className="text-xl sm:text-2xl font-heading font-bold text-ink">
                 Select or drop an image to compress
               </p>
-              <p className="text-sm text-slate">
+              <p className="text-base sm:text-lg text-slate">
                 Supports JPEG, PNG, and WebP up to {PROCESSING_LIMITS.maxFileSizeLabel}
               </p>
             </div>
-            <div className="pt-2 flex flex-wrap items-center justify-center gap-2 text-xs text-slate">
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-cloud font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-success" /> Strict byte measurement
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-2.5 text-sm sm:text-[15px] text-slate">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cloud font-medium">
+                <CheckCircle2 className="w-4 h-4 text-success" /> Strict byte measurement
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-cloud font-medium">
-                <ShieldCheck className="w-3.5 h-3.5 text-success" /> Local Browser Processing (No Uploads)
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cloud font-medium">
+                <ShieldCheck className="w-4 h-4 text-success" /> Local Browser Processing (No Uploads)
               </span>
             </div>
           </div>
@@ -329,10 +329,10 @@ export function ImageCompressor() {
         /* 2. Loaded Image Workspace & Compression Controls */
         <div className="space-y-6">
           {/* Top Info Bar */}
-          <div className="relative rounded-2xl bg-white border border-border p-5 shadow-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="relative rounded-2xl bg-white border border-border p-5 sm:p-6 shadow-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <CropCorners size={12} color="text-cobalt/40" />
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="w-12 h-12 rounded-xl bg-cloud border border-border overflow-hidden flex-shrink-0 flex items-center justify-center">
+            <div className="flex items-center gap-3.5 min-w-0">
+              <div className="w-14 h-14 rounded-xl bg-cloud border border-border overflow-hidden flex-shrink-0 flex items-center justify-center">
                 <img
                   src={selectedImage.previewUrl}
                   alt="Original thumbnail"
@@ -340,10 +340,10 @@ export function ImageCompressor() {
                 />
               </div>
               <div className="min-w-0">
-                <h3 className="font-heading font-bold text-ink text-base truncate max-w-xs sm:max-w-md">
+                <h3 className="font-heading font-bold text-ink text-lg sm:text-xl truncate max-w-xs sm:max-w-md">
                   {selectedImage.name}
                 </h3>
-                <div className="flex items-center gap-2 text-xs text-slate tabular-nums mt-0.5">
+                <div className="flex items-center gap-2.5 text-sm sm:text-base text-slate tabular-nums mt-0.5">
                   <span className="font-semibold text-ink">{formatBytes(selectedImage.sizeBytes)}</span>
                   <span>•</span>
                   <span>
@@ -354,7 +354,7 @@ export function ImageCompressor() {
                     {selectedImage.type.replace("image/", "")}
                   </span>
                   {selectedImage.hasAlpha && (
-                    <span className="px-1.5 py-0.2 rounded bg-info-light text-info font-bold text-[10px]">
+                    <span className="px-2 py-0.5 rounded bg-info-light text-info font-bold text-xs sm:text-sm">
                       Alpha
                     </span>
                   )}
@@ -366,31 +366,31 @@ export function ImageCompressor() {
               type="button"
               onClick={handleReset}
               disabled={isProcessing}
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate hover:text-error hover:bg-error-light transition-colors self-end sm:self-center focus:outline-none focus-visible:ring-2 focus-visible:ring-error disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm sm:text-base font-semibold text-slate hover:text-error hover:bg-error-light transition-colors self-end sm:self-center focus:outline-none focus-visible:ring-2 focus-visible:ring-error disabled:opacity-50"
             >
-              <RotateCcw className="w-3.5 h-3.5" />
+              <RotateCcw className="w-4 h-4" />
               <span>Change Image</span>
             </button>
           </div>
 
           {/* Configuration Panel */}
-          <div className="relative rounded-2xl bg-white border border-border p-6 shadow-card space-y-6">
+          <div className="relative rounded-3xl bg-white border border-border p-7 sm:p-9 shadow-card space-y-7">
             <CropCorners size={14} color="text-cobalt" />
 
             {/* Target Size Presets & Custom Input */}
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-bold uppercase tracking-wider text-ink font-heading flex items-center gap-1.5">
+                <label className="text-sm sm:text-base font-bold uppercase tracking-wider text-ink font-heading flex items-center gap-2">
                   <Sliders className="w-4 h-4 text-cobalt" />
                   <span>Choose Target File Size Limit</span>
                 </label>
-                <span className="text-xs font-bold text-cobalt tabular-nums">
+                <span className="text-sm sm:text-base font-bold text-cobalt tabular-nums">
                   Target: {formatBytes(targetBytes)}
                 </span>
               </div>
 
               {/* Presets */}
-              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
                 {COMPRESSOR_PRESETS.map((preset) => {
                   const isSelected = selectedPreset === preset.valueBytes;
                   return (
@@ -399,15 +399,15 @@ export function ImageCompressor() {
                       type="button"
                       disabled={isProcessing}
                       onClick={() => handlePresetSelect(preset.valueBytes)}
-                      className={`px-3 py-2.5 rounded-xl border text-xs font-bold tabular-nums transition-all flex flex-col items-center justify-center gap-0.5 ${
+                      className={`px-3.5 py-3.5 rounded-xl border text-sm sm:text-base font-bold tabular-nums transition-all flex flex-col items-center justify-center gap-1 ${
                         isSelected
                           ? "border-cobalt bg-cobalt text-white shadow-sm"
                           : "border-border bg-cloud text-ink hover:border-cobalt/50 hover:bg-white"
                       }`}
                     >
-                      <span className="text-sm">{preset.label}</span>
+                      <span className="text-base sm:text-lg">{preset.label}</span>
                       <span
-                        className={`text-[10px] font-normal ${
+                        className={`text-xs sm:text-sm font-normal ${
                           isSelected ? "text-white/80" : "text-slate"
                         }`}
                       >
@@ -421,7 +421,7 @@ export function ImageCompressor() {
               </div>
 
               {/* Custom Target Input */}
-              <div className="pt-2 flex items-center gap-3">
+              <div className="pt-2 flex items-center gap-3.5">
                 <div className="flex-1 relative">
                   <input
                     type="number"
@@ -431,15 +431,15 @@ export function ImageCompressor() {
                     value={customValue}
                     onChange={(e) => handleCustomTargetChange(e.target.value, customUnit)}
                     placeholder="Enter custom size limit"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-cloud text-ink text-sm font-semibold tabular-nums focus:outline-none focus:ring-2 focus:ring-cobalt focus:border-cobalt transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-cloud text-ink text-base font-semibold tabular-nums focus:outline-none focus:ring-2 focus:ring-cobalt focus:border-cobalt transition-colors"
                     aria-label="Custom target size"
                   />
-                  <span className="absolute right-3.5 top-2.5 text-xs font-bold text-slate">
+                  <span className="absolute right-4 top-3 text-sm font-semibold text-slate">
                     Custom Target
                   </span>
                 </div>
 
-                <div className="flex rounded-xl border border-border overflow-hidden bg-cloud p-0.5">
+                <div className="flex rounded-xl border border-border overflow-hidden bg-cloud p-1">
                   <button
                     type="button"
                     disabled={isProcessing}
@@ -447,7 +447,7 @@ export function ImageCompressor() {
                       setCustomUnit("KB");
                       handleCustomTargetChange(customValue, "KB");
                     }}
-                    className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors ${
+                    className={`px-3.5 py-2 text-sm font-bold rounded-lg transition-colors ${
                       customUnit === "KB" ? "bg-white text-cobalt shadow-sm" : "text-slate hover:text-ink"
                     }`}
                   >
@@ -460,7 +460,7 @@ export function ImageCompressor() {
                       setCustomUnit("MB");
                       handleCustomTargetChange(customValue, "MB");
                     }}
-                    className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors ${
+                    className={`px-3.5 py-2 text-sm font-bold rounded-lg transition-colors ${
                       customUnit === "MB" ? "bg-white text-cobalt shadow-sm" : "text-slate hover:text-ink"
                     }`}
                   >
@@ -471,13 +471,13 @@ export function ImageCompressor() {
             </div>
 
             {/* Output Format & Dimension Scaling Options */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-4 border-t border-border">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-5 border-t border-border">
               {/* Format selection */}
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-ink font-heading block">
+              <div className="space-y-2.5">
+                <label className="text-sm sm:text-base font-bold uppercase tracking-wider text-ink font-heading block">
                   Output Format
                 </label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-2.5">
                   {(["image/jpeg", "image/webp", "image/png"] as OutputFormat[]).map((fmt) => {
                     const isSelected = outputFormat === fmt;
                     const label = fmt === "image/jpeg" ? "JPEG" : fmt === "image/webp" ? "WebP" : "PNG";
@@ -487,7 +487,7 @@ export function ImageCompressor() {
                         type="button"
                         disabled={isProcessing}
                         onClick={() => setOutputFormat(fmt)}
-                        className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all text-center ${
+                        className={`py-3 px-3.5 rounded-xl border text-sm sm:text-base font-bold transition-all text-center ${
                           isSelected
                             ? "border-cobalt bg-cobalt/10 text-cobalt font-extrabold"
                             : "border-border bg-cloud text-ink hover:border-slate/40"
@@ -499,26 +499,26 @@ export function ImageCompressor() {
                   })}
                 </div>
                 {outputFormat === "image/jpeg" && selectedImage.hasAlpha && (
-                  <p className="text-[11px] text-warning flex items-center gap-1 mt-1">
-                    <AlertTriangle className="w-3.5 h-3.5 flex-shrink-0" />
+                  <p className="text-sm sm:text-[15px] text-warning flex items-center gap-1.5 mt-2 leading-relaxed">
+                    <AlertTriangle className="w-4 h-4 flex-shrink-0" />
                     <span>JPEG has no alpha; transparency will flatten to white.</span>
                   </p>
                 )}
                 {outputFormat === "image/png" && (
-                  <p className="text-[11px] text-slate mt-1">
+                  <p className="text-sm sm:text-[15px] text-slate mt-2 leading-relaxed">
                     Canvas PNG encoding is lossless and does not support lossy quality reduction.
                   </p>
                 )}
               </div>
 
               {/* Dimension scaling optional override */}
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-bold uppercase tracking-wider text-ink font-heading flex items-center gap-1">
-                    <Maximize2 className="w-3.5 h-3.5 text-slate" />
+                  <label className="text-sm sm:text-base font-bold uppercase tracking-wider text-ink font-heading flex items-center gap-1.5">
+                    <Maximize2 className="w-4 h-4 text-slate" />
                     <span>Dimension Scale</span>
                   </label>
-                  <span className="text-xs font-bold text-slate tabular-nums">
+                  <span className="text-sm sm:text-base font-bold text-slate tabular-nums">
                     {Math.round(selectedImage.width * (scalePercent / 100))}×
                     {Math.round(selectedImage.height * (scalePercent / 100))}px
                   </span>
@@ -530,7 +530,7 @@ export function ImageCompressor() {
                       type="button"
                       disabled={isProcessing}
                       onClick={() => setScalePercent(pct)}
-                      className={`py-2 px-2 rounded-xl border text-xs font-bold tabular-nums transition-all text-center ${
+                      className={`py-3 px-2.5 rounded-xl border text-sm sm:text-base font-bold tabular-nums transition-all text-center ${
                         scalePercent === pct
                           ? "border-cobalt bg-cobalt/10 text-cobalt font-extrabold"
                           : "border-border bg-cloud text-ink hover:border-slate/40"
@@ -540,7 +540,7 @@ export function ImageCompressor() {
                     </button>
                   ))}
                 </div>
-                <p className="text-[11px] text-slate mt-1">
+                <p className="text-sm sm:text-[15px] text-slate mt-2 leading-relaxed">
                   Downscaling pixels makes aggressive targets attainable with higher sharpness.
                 </p>
               </div>
@@ -552,7 +552,7 @@ export function ImageCompressor() {
                 type="button"
                 disabled={isProcessing}
                 onClick={handleRunCompression}
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-cobalt hover:bg-cobalt-hover text-white font-heading font-bold text-base transition-all shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt disabled:opacity-50"
+                className="w-full inline-flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl bg-cobalt hover:bg-cobalt-hover text-white font-heading font-bold text-lg sm:text-xl transition-all shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt disabled:opacity-50"
               >
                 <FileCheck className="w-5 h-5 stroke-[2.2]" />
                 <span>
@@ -565,17 +565,17 @@ export function ImageCompressor() {
 
             {/* Live Progress State */}
             {isProcessing && progress && (
-              <div className="p-4 rounded-xl border border-cobalt/30 bg-cobalt/5 space-y-2.5 animate-in fade-in duration-150">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-cobalt flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-cobalt animate-ping" />
+              <div className="p-5 rounded-2xl border border-cobalt/30 bg-cobalt/5 space-y-3 animate-in fade-in duration-150">
+                <div className="flex items-center justify-between text-sm sm:text-base">
+                  <span className="font-bold text-cobalt flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-cobalt animate-ping" />
                     {progress.message}
                   </span>
                   <span className="tabular-nums font-semibold text-slate">
                     Iteration {progress.iteration} of {progress.maxIterations}
                   </span>
                 </div>
-                <div className="w-full h-2 rounded-full bg-border overflow-hidden">
+                <div className="w-full h-2.5 rounded-full bg-border overflow-hidden">
                   <div
                     className="h-full bg-cobalt transition-all duration-200"
                     style={{
@@ -591,17 +591,17 @@ export function ImageCompressor() {
           {errorMessage && (
             <div
               role="alert"
-              className="p-4 rounded-xl border border-error/30 bg-error-light text-error flex items-start gap-3 animate-in fade-in duration-150"
+              className="p-5 rounded-2xl border border-error/30 bg-error-light text-error flex items-start gap-3.5 animate-in fade-in duration-150"
             >
               <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-              <div className="flex-1 text-sm">
-                <p className="font-bold">Compression Alert</p>
-                <p className="text-error/90 mt-0.5">{errorMessage}</p>
+              <div className="flex-1 text-base">
+                <p className="font-bold text-base sm:text-lg">Compression Alert</p>
+                <p className="text-error/90 mt-1 leading-relaxed text-sm sm:text-base">{errorMessage}</p>
               </div>
               <button
                 type="button"
                 onClick={() => setErrorMessage(null)}
-                className="p-1 rounded text-error/70 hover:text-error"
+                className="p-1.5 rounded-lg text-error/70 hover:text-error hover:bg-error/10 transition-colors"
                 aria-label="Dismiss error"
               >
                 <X className="w-4 h-4" />
@@ -611,32 +611,32 @@ export function ImageCompressor() {
 
           {/* 3. Output Verification & Result Experience */}
           {result && (
-            <div className="relative rounded-2xl bg-white border border-border p-6 sm:p-8 shadow-elevated space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-200">
+            <div className="relative rounded-3xl bg-white border border-border p-7 sm:p-9 shadow-elevated space-y-7 animate-in fade-in slide-in-from-bottom-2 duration-200">
               <CropCorners size={16} color={result.status === "target_met" ? "text-success" : "text-warning"} />
 
               {/* Status Header */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-border pb-5">
-                <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-border pb-6">
+                <div className="flex items-center gap-3.5">
                   <div
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                    className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 ${
                       result.status === "target_met"
                         ? "bg-success-light text-success"
                         : "bg-warning-light text-warning"
                     }`}
                   >
                     {result.status === "target_met" ? (
-                      <CheckCircle2 className="w-6 h-6 stroke-[2.2]" />
+                      <CheckCircle2 className="w-7 h-7 stroke-[2.2]" />
                     ) : (
-                      <AlertTriangle className="w-6 h-6 stroke-[2.2]" />
+                      <AlertTriangle className="w-7 h-7 stroke-[2.2]" />
                     )}
                   </div>
                   <div>
-                    <div className="flex items-center gap-2">
-                      <h3 className="font-heading font-extrabold text-lg text-ink">
+                    <div className="flex items-center gap-2.5">
+                      <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-ink">
                         {result.status === "target_met" ? "Target Limit Met" : "Target Limit Not Met"}
                       </h3>
                       <span
-                        className={`text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded ${
+                        className={`text-sm sm:text-[15px] font-bold uppercase tracking-wider px-3 py-1 rounded-md ${
                           result.status === "target_met"
                             ? "bg-success text-white"
                             : "bg-warning text-white"
@@ -645,7 +645,7 @@ export function ImageCompressor() {
                         {result.status === "target_met" ? "Verified" : "Exceeded"}
                       </span>
                     </div>
-                    <p className="text-xs text-slate mt-0.5">
+                    <p className="text-[16px] sm:text-[17px] text-slate mt-1.5 leading-[1.65]">
                       {result.status === "target_met"
                         ? `Actual encoded Blob (${formatBytes(result.outputBytes)}) is under the requested ${formatBytes(result.targetBytes)} limit.`
                         : `Smallest achievable candidate (${formatBytes(result.outputBytes)}) exceeds your ${formatBytes(result.targetBytes)} target.`}
@@ -658,9 +658,9 @@ export function ImageCompressor() {
                   <button
                     type="button"
                     onClick={handleDownload}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cobalt hover:bg-cobalt-hover text-white text-sm font-heading font-bold shadow-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
+                    className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-cobalt hover:bg-cobalt-hover text-white text-base sm:text-lg font-heading font-bold shadow-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
                   >
-                    <Download className="w-4 h-4 stroke-[2.2]" />
+                    <Download className="w-5 h-5 stroke-[2.2]" />
                     <span>Download {formatBytes(result.outputBytes)}</span>
                   </button>
                 )}
@@ -668,13 +668,13 @@ export function ImageCompressor() {
 
               {/* Advice Box for Unmet Targets */}
               {result.status === "target_not_met" && result.advice && (
-                <div className="p-4 rounded-xl border border-warning/30 bg-warning-light text-ink text-xs space-y-2">
-                  <div className="flex items-center gap-1.5 font-bold text-warning font-heading">
-                    <HelpCircle className="w-4 h-4" />
+                <div className="p-6 rounded-2xl border border-warning/30 bg-warning-light text-ink space-y-3">
+                  <div className="flex items-center gap-2 font-bold text-warning font-heading text-lg">
+                    <HelpCircle className="w-5 h-5 flex-shrink-0" />
                     <span>Recommendation to Reach Target:</span>
                   </div>
-                  <p className="text-slate leading-relaxed">{result.advice}</p>
-                  <div className="flex flex-wrap gap-2 pt-1">
+                  <p className="text-slate text-[16px] sm:text-[17px] leading-[1.7]">{result.advice}</p>
+                  <div className="flex flex-wrap gap-2.5 pt-1">
                     {scalePercent === 100 && (
                       <button
                         type="button"
@@ -682,7 +682,7 @@ export function ImageCompressor() {
                           setScalePercent(75);
                           handleRunCompression();
                         }}
-                        className="px-3 py-1.5 rounded-lg bg-white border border-border text-xs font-bold text-ink hover:border-cobalt transition-colors"
+                        className="px-4 py-2.5 rounded-xl bg-white border border-border text-sm sm:text-base font-bold text-ink hover:border-cobalt transition-colors"
                       >
                         Try scaling to 75%
                       </button>
@@ -694,7 +694,7 @@ export function ImageCompressor() {
                           setOutputFormat("image/webp");
                           handleRunCompression();
                         }}
-                        className="px-3 py-1.5 rounded-lg bg-white border border-border text-xs font-bold text-ink hover:border-cobalt transition-colors"
+                        className="px-4 py-2.5 rounded-xl bg-white border border-border text-sm sm:text-base font-bold text-ink hover:border-cobalt transition-colors"
                       >
                         Switch to WebP
                       </button>
@@ -704,57 +704,57 @@ export function ImageCompressor() {
               )}
 
               {/* Metrics Table */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-cloud rounded-xl p-4 border border-border">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-cloud rounded-2xl p-5 sm:p-6 border border-border">
                 <div>
-                  <p className="text-[11px] font-semibold text-slate uppercase tracking-wider">Output Size</p>
-                  <p className="text-lg font-bold text-ink tabular-nums mt-0.5">
+                  <p className="text-xs sm:text-sm font-semibold text-slate uppercase tracking-wider">Output Size</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-ink tabular-nums mt-1">
                     {formatBytes(result.outputBytes)}
                   </p>
-                  <span className="text-[11px] text-slate tabular-nums">
+                  <span className="text-xs sm:text-sm text-slate tabular-nums">
                     Target: {formatBytes(result.targetBytes)}
                   </span>
                 </div>
                 <div>
-                  <p className="text-[11px] font-semibold text-slate uppercase tracking-wider">Reduction</p>
-                  <p className="text-lg font-bold text-success tabular-nums mt-0.5">
+                  <p className="text-xs sm:text-sm font-semibold text-slate uppercase tracking-wider">Reduction</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-success tabular-nums mt-1">
                     {result.percentReduction}%
                   </p>
-                  <span className="text-[11px] text-slate tabular-nums">
+                  <span className="text-xs sm:text-sm text-slate tabular-nums">
                     Saved {formatBytes(Math.max(0, result.originalBytes - result.outputBytes))}
                   </span>
                 </div>
                 <div>
-                  <p className="text-[11px] font-semibold text-slate uppercase tracking-wider">Dimensions</p>
-                  <p className="text-lg font-bold text-ink tabular-nums mt-0.5">
+                  <p className="text-xs sm:text-sm font-semibold text-slate uppercase tracking-wider">Dimensions</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-ink tabular-nums mt-1">
                     {result.outputWidth}×{result.outputHeight}
                   </p>
-                  <span className="text-[11px] text-slate">
+                  <span className="text-xs sm:text-sm text-slate">
                     Orig: {result.originalWidth}×{result.originalHeight}
                   </span>
                 </div>
                 <div>
-                  <p className="text-[11px] font-semibold text-slate uppercase tracking-wider">Quality Used</p>
-                  <p className="text-lg font-bold text-ink tabular-nums mt-0.5">
+                  <p className="text-xs sm:text-sm font-semibold text-slate uppercase tracking-wider">Quality Used</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-ink tabular-nums mt-1">
                     {Math.round(result.qualityUsed * 100)}%
                   </p>
-                  <span className="text-[11px] text-slate">
+                  <span className="text-xs sm:text-sm text-slate">
                     {result.iterationsUsed} test iterations
                   </span>
                 </div>
               </div>
 
               {/* Before / After Preview Section */}
-              <div className="space-y-3 pt-2">
+              <div className="space-y-4 pt-2">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-ink font-heading">
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-ink font-heading">
                     Visual Quality Inspection
                   </h4>
-                  <div className="flex rounded-lg border border-border overflow-hidden bg-cloud p-0.5 text-xs font-semibold">
+                  <div className="flex rounded-xl border border-border overflow-hidden bg-cloud p-1 text-sm font-semibold">
                     <button
                       type="button"
                       onClick={() => setActiveTab("side-by-side")}
-                      className={`px-2.5 py-1 rounded-md transition-colors ${
-                        activeTab === "side-by-side" ? "bg-white text-cobalt shadow-xs" : "text-slate"
+                      className={`px-3 py-1.5 rounded-lg transition-colors ${
+                        activeTab === "side-by-side" ? "bg-white text-cobalt shadow-xs" : "text-slate hover:text-ink"
                       }`}
                     >
                       Side by Side
@@ -762,8 +762,8 @@ export function ImageCompressor() {
                     <button
                       type="button"
                       onClick={() => setActiveTab("original")}
-                      className={`px-2.5 py-1 rounded-md transition-colors ${
-                        activeTab === "original" ? "bg-white text-cobalt shadow-xs" : "text-slate"
+                      className={`px-3 py-1.5 rounded-lg transition-colors ${
+                        activeTab === "original" ? "bg-white text-cobalt shadow-xs" : "text-slate hover:text-ink"
                       }`}
                     >
                       Original
@@ -771,8 +771,8 @@ export function ImageCompressor() {
                     <button
                       type="button"
                       onClick={() => setActiveTab("processed")}
-                      className={`px-2.5 py-1 rounded-md transition-colors ${
-                        activeTab === "processed" ? "bg-white text-cobalt shadow-xs" : "text-slate"
+                      className={`px-3 py-1.5 rounded-lg transition-colors ${
+                        activeTab === "processed" ? "bg-white text-cobalt shadow-xs" : "text-slate hover:text-ink"
                       }`}
                     >
                       Compressed
@@ -780,14 +780,14 @@ export function ImageCompressor() {
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-border bg-cloud p-3 sm:p-4 min-h-[220px] flex items-center justify-center">
+                <div className="rounded-xl border border-border bg-cloud p-4 sm:p-5 min-h-[240px] flex items-center justify-center">
                   {activeTab === "side-by-side" && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-                      <div className="space-y-1.5 text-center">
-                        <span className="text-[11px] font-bold text-slate uppercase tracking-wider">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
+                      <div className="space-y-2 text-center">
+                        <span className="text-xs sm:text-sm font-bold text-slate uppercase tracking-wider">
                           Original ({formatBytes(result.originalBytes)})
                         </span>
-                        <div className="h-56 bg-white rounded-lg border border-border overflow-hidden flex items-center justify-center p-2">
+                        <div className="h-64 bg-white rounded-xl border border-border overflow-hidden flex items-center justify-center p-3">
                           <img
                             src={selectedImage.previewUrl}
                             alt="Original"
@@ -795,11 +795,11 @@ export function ImageCompressor() {
                           />
                         </div>
                       </div>
-                      <div className="space-y-1.5 text-center">
-                        <span className="text-[11px] font-bold text-cobalt uppercase tracking-wider">
+                      <div className="space-y-2 text-center">
+                        <span className="text-xs sm:text-sm font-bold text-cobalt uppercase tracking-wider">
                           Compressed ({formatBytes(result.outputBytes)})
                         </span>
-                        <div className="h-56 bg-white rounded-lg border border-border overflow-hidden flex items-center justify-center p-2">
+                        <div className="h-64 bg-white rounded-xl border border-border overflow-hidden flex items-center justify-center p-3">
                           {result.outputUrl && (
                             <img
                               src={result.outputUrl}
@@ -813,11 +813,11 @@ export function ImageCompressor() {
                   )}
 
                   {activeTab === "original" && (
-                    <div className="text-center space-y-2 max-w-lg">
-                      <span className="text-xs font-bold text-slate">
+                    <div className="text-center space-y-2.5 max-w-lg">
+                      <span className="text-sm font-bold text-slate">
                         Original ({formatBytes(result.originalBytes)} • {result.originalWidth}×{result.originalHeight}px)
                       </span>
-                      <div className="h-80 bg-white rounded-lg border border-border overflow-hidden flex items-center justify-center p-2">
+                      <div className="h-80 bg-white rounded-xl border border-border overflow-hidden flex items-center justify-center p-3">
                         <img
                           src={selectedImage.previewUrl}
                           alt="Original view"
@@ -828,11 +828,11 @@ export function ImageCompressor() {
                   )}
 
                   {activeTab === "processed" && (
-                    <div className="text-center space-y-2 max-w-lg">
-                      <span className="text-xs font-bold text-cobalt">
+                    <div className="text-center space-y-2.5 max-w-lg">
+                      <span className="text-sm font-bold text-cobalt">
                         Compressed Result ({formatBytes(result.outputBytes)} • {result.outputWidth}×{result.outputHeight}px)
                       </span>
-                      <div className="h-80 bg-white rounded-lg border border-border overflow-hidden flex items-center justify-center p-2">
+                      <div className="h-80 bg-white rounded-xl border border-border overflow-hidden flex items-center justify-center p-3">
                         {result.outputUrl && (
                           <img
                             src={result.outputUrl}

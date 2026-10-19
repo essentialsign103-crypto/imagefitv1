@@ -76,3 +76,118 @@ export const JPEG_BACKGROUND_PRESETS = [
   { label: "Cloud Surface", hex: "#F5F7FB" },
   { label: "Deep Ink", hex: "#15233B" },
 ];
+
+export interface StudioModelConfig {
+  id: string;
+  name: string;
+  category: "universal" | "portrait";
+  license: string;
+  approxSizeMb: number;
+  description: string;
+  recommendedFor: string;
+}
+
+export const STUDIO_MODELS: StudioModelConfig[] = [
+  {
+    id: "onnx-community/BiRefNet_lite-ONNX",
+    name: "BiRefNet Lite (Universal)",
+    category: "universal",
+    license: "MIT",
+    approxSizeMb: 224,
+    description: "High-resolution dichotomous salient object segmentation. Accurately segments salient foregrounds (products, animals, apparel, vehicles, and people). Downloads ~224 MB full-precision ONNX weights from Hugging Face on first use.",
+    recommendedFor: "Products, objects, e-commerce, and general images",
+  },
+  {
+    id: "Xenova/modnet",
+    name: "MODNet (Portrait Matting)",
+    category: "portrait",
+    license: "Apache-2.0",
+    approxSizeMb: 25,
+    description: "Lightweight portrait matting engine specifically trained on human figures. Accurately extracts fine hair strands and facial contours. Not intended for inanimate objects. Downloads ~25 MB ONNX weights on first use.",
+    recommendedFor: "Human portraits, headshots, and people photos",
+  },
+];
+
+export const STUDIO_SOLID_PRESETS = [
+  { label: "Pure White", hex: "#FFFFFF", category: "E-Commerce" },
+  { label: "Studio Grey", hex: "#E2E8F0", category: "Neutral" },
+  { label: "Dark Onyx", hex: "#0F172A", category: "Dramatic" },
+  { label: "Warm Sand", hex: "#F5F5F0", category: "Editorial" },
+  { label: "Clean Cobalt", hex: "#1E40AF", category: "Brand" },
+  { label: "Mint Fresh", hex: "#ECFDF5", category: "Pastel" },
+  { label: "Soft Rose", hex: "#FFF1F2", category: "Pastel" },
+  { label: "Deep Ink", hex: "#15233B", category: "ImageFit" },
+];
+
+export const STUDIO_GRADIENT_PRESETS = [
+  {
+    id: "studio-spotlight",
+    label: "Studio Spotlight",
+    css: "radial-gradient(circle at 50% 40%, #FFFFFF 0%, #E2E8F0 70%, #CBD5E1 100%)",
+    type: "radial" as const,
+    colors: ["#FFFFFF", "#E2E8F0", "#CBD5E1"],
+  },
+  {
+    id: "clean-horizon",
+    label: "Clean Horizon",
+    css: "linear-gradient(180deg, #F8FAFC 0%, #E2E8F0 100%)",
+    type: "linear" as const,
+    colors: ["#F8FAFC", "#E2E8F0"],
+  },
+  {
+    id: "sunset-warmth",
+    label: "Sunset Glow",
+    css: "linear-gradient(135deg, #FFEDD5 0%, #FED7AA 50%, #F472B6 100%)",
+    type: "linear" as const,
+    colors: ["#FFEDD5", "#FED7AA", "#F472B6"],
+  },
+  {
+    id: "modern-indigo",
+    label: "Modern Indigo",
+    css: "linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4338CA 100%)",
+    type: "linear" as const,
+    colors: ["#1E1B4B", "#312E81", "#4338CA"],
+  },
+  {
+    id: "soft-lavender",
+    label: "Soft Lavender",
+    css: "linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 50%, #DDD6FE 100%)",
+    type: "linear" as const,
+    colors: ["#F5F3FF", "#EDE9FE", "#DDD6FE"],
+  },
+  {
+    id: "cyber-slate",
+    label: "Cyber Slate",
+    css: "linear-gradient(135deg, #0F172A 0%, #1E293B 100%)",
+    type: "linear" as const,
+    colors: ["#0F172A", "#1E293B"],
+  },
+];
+
+export const STUDIO_SCENE_PRESETS = [
+  {
+    id: "minimal-stage",
+    label: "Minimal Stage",
+    description: "Clean podium with soft gradient and subtle floor shadow",
+    category: "Product",
+  },
+  {
+    id: "soft-bokeh",
+    label: "Soft Bokeh",
+    description: "Warm optical blur circles for professional portraits",
+    category: "Portrait",
+  },
+  {
+    id: "architectural-light",
+    label: "Window Shadows",
+    description: "Sunlight through window panes cast across neutral wall",
+    category: "Editorial",
+  },
+  {
+    id: "nature-sunbeam",
+    label: "Morning Sunbeam",
+    description: "Gentle natural sunbeams and organic warm undertones",
+    category: "Outdoor",
+  },
+];
+

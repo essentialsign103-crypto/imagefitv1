@@ -86,17 +86,17 @@ export function ScrollReveal({
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // Bidirectional reveal: smooth entrance when entering, reset on complete exit
           if (entry.isIntersecting) {
             setIsVisible(true);
-          } else {
+          } else if (entry.boundingClientRect.top > 0) {
+            // Only reset if scrolled back down below viewport
             setIsVisible(false);
           }
         });
       },
       {
         threshold: Math.min(Math.max(threshold, 0), 1),
-        rootMargin: "0px 0px -30px 0px",
+        rootMargin: "0px 0px -20px 0px",
       }
     );
 

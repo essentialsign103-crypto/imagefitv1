@@ -2,6 +2,34 @@
 
 All notable changes to the ImageFit codebase are recorded here chronologically.
 
+## [0.7.0] — 2026-10-19
+
+### Milestone 7: Background Studio & In-Browser AI Matting
+- **Background Studio Module (`app/tools/background-studio/page.tsx` & `components/studio/BackgroundStudio.tsx`):**
+  - Implemented cohesive client-side Background Remover and Background Maker in a single unified editing workspace.
+  - Client-side AI execution powered by Transformers.js (`@huggingface/transformers` v4.3.1) and ONNX Runtime Web.
+  - Multi-model selection:
+    - Primary model: `onnx-community/BiRefNet_lite-ONNX` (Universal Salient Object & General BG Removal, MIT license, ~224 MB full-precision ONNX weights).
+    - Secondary model: `Xenova/modnet` (Human Portrait Matting, Apache-2.0 license, ~25 MB ONNX weights).
+  - High-precision resolution preservation: Bilinear mask upscaling using HTML Canvas `source-in` composite blending preserves full original image dimensions.
+  - Actual alpha channel verification: Tests pixel data to confirm genuine transparency before awarding transparent status.
+- **Background Maker Compositing Engine (`lib/image-processing/studio.ts`):**
+  - Transparent mode with non-exported subtle preview checkerboard.
+  - Studio Solid Colors with presets (Pure White, Studio Grey, Dark Onyx, Warm Sand, Clean Cobalt, Mint, Rose) and custom native hex color picker.
+  - Studio Gradients: Radial Spotlight, Clean Horizon, Sunset Glow, Modern Indigo, Soft Lavender, Cyber Slate.
+  - Architectural & Studio Scene Presets: Minimal Stage with perspective floor shadow, Soft Bokeh, Window Shadows, Morning Sunbeam.
+  - Custom user-uploaded background image with Cover, Contain, and Stretch fit modes.
+  - Subject transforms: Scale (0.2x to 1.5x), horizontal/vertical offsets (-40% to +40%), horizontal/vertical flipping, and realistic soft drop shadows.
+  - Real export: Verified Blobs in PNG (preserves alpha), WebP, and JPEG (transparency flattened onto selected background with quality controls).
+- **Navigation & Homepage Integration:**
+  - Integrated Background Studio card into Homepage tools grid with CropCorners motif and AI Studio pill.
+  - Added Studio to Header navigation links and Footer tools catalog.
+  - Registered `/tools/background-studio` in `app/sitemap.ts`.
+  - Refined `ScrollReveal.tsx` bidirectional scroll logic for smooth reading experience without jarring resets.
+- **Unit Test Suite & Quality Verification (`lib/image-processing/studio.test.mjs`):**
+  - Added 19 new deterministic tests covering filename generation, transparency verification, subject transforms, background fits, licensing, and async lifecycle.
+  - Total test suite expanded to 72/72 tests passing with zero cancelled/failed tests.
+
 ---
 
 ## [0.6.0] — 2026-10-17

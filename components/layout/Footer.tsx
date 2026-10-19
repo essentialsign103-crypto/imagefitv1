@@ -11,10 +11,10 @@ export function Footer() {
           {/* Brand Info */}
           <div className="space-y-4 md:col-span-1">
             <ImageFitLogo />
-            <p className="text-sm text-slate leading-relaxed">
+            <p className="text-base text-slate leading-relaxed">
               Every image. The right fit. High-precision browser-based compression to target file sizes, dimension resizing, and format conversion.
             </p>
-            <div className="flex items-center gap-2 text-xs font-medium text-success pt-1">
+            <div className="flex items-center gap-2 text-sm font-medium text-success pt-1">
               <ShieldCheck className="w-4 h-4 text-success flex-shrink-0" />
               <span>Client-Side Processing. No remote uploads.</span>
             </div>
@@ -22,17 +22,17 @@ export function Footer() {
 
           {/* Tools */}
           <div>
-            <h3 className="text-xs font-bold text-ink uppercase tracking-wider mb-4 font-heading">
+            <h3 className="text-sm font-bold text-ink uppercase tracking-wider mb-4 font-heading">
               Image Tools
             </h3>
-            <ul className="space-y-2.5 text-sm" role="list">
+            <ul className="space-y-3 text-base" role="list">
               <li>
                 <Link
                   href="/tools/image-compressor"
                   className="text-slate hover:text-cobalt transition-colors inline-flex items-center gap-1.5"
                 >
                   <span>Image Compressor</span>
-                  <span className="text-[10px] px-1.5 py-0.2 rounded bg-cobalt/10 text-cobalt font-semibold">
+                  <span className="text-xs px-2 py-0.5 rounded bg-cobalt/10 text-cobalt font-semibold">
                     Target Size
                   </span>
                 </Link>
@@ -53,15 +53,26 @@ export function Footer() {
                   Image Converter
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/tools/background-studio"
+                  className="text-slate hover:text-cobalt transition-colors inline-flex items-center gap-1.5"
+                >
+                  <span>Background Studio</span>
+                  <span className="text-xs px-2 py-0.5 rounded bg-cobalt/10 text-cobalt font-semibold">
+                    AI Matting
+                  </span>
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Educational Guides */}
           <div>
-            <h3 className="text-xs font-bold text-ink uppercase tracking-wider mb-4 font-heading">
+            <h3 className="text-sm font-bold text-ink uppercase tracking-wider mb-4 font-heading">
               Guides & Resources
             </h3>
-            <ul className="space-y-2.5 text-sm" role="list">
+            <ul className="space-y-3 text-base" role="list">
               <li>
                 <Link
                   href="/guides/reduce-image-size"
@@ -91,10 +102,10 @@ export function Footer() {
 
           {/* Legal & Product Trust */}
           <div>
-            <h3 className="text-xs font-bold text-ink uppercase tracking-wider mb-4 font-heading">
+            <h3 className="text-sm font-bold text-ink uppercase tracking-wider mb-4 font-heading">
               Product & Trust
             </h3>
-            <ul className="space-y-2.5 text-sm" role="list">
+            <ul className="space-y-3 text-base" role="list">
               <li>
                 <Link href="/about" className="text-slate hover:text-cobalt transition-colors">
                   About ImageFit
@@ -103,7 +114,7 @@ export function Footer() {
               <li>
                 <Link href="/upgrade" className="text-slate hover:text-cobalt transition-colors inline-flex items-center gap-1.5">
                   <span>Upgrade Concept</span>
-                  <span className="text-[10px] px-1.5 py-0.2 rounded bg-cobalt/10 text-cobalt font-semibold">
+                  <span className="text-xs px-2 py-0.5 rounded bg-cobalt/10 text-cobalt font-semibold">
                     Preview
                   </span>
                 </Link>
@@ -128,15 +139,15 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 mt-12 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate">
+        <div className="pt-8 mt-12 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate">
           <p>© {new Date().getFullYear()} ImageFit. Precision image optimization. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1">
-              <Cpu className="w-3.5 h-3.5 text-cobalt" /> Client-Side WebCanvas
+            <span className="flex items-center gap-1.5">
+              <Cpu className="w-4 h-4 text-cobalt" /> Client-Side WebCanvas
             </span>
             <span>•</span>
-            <span className="flex items-center gap-1">
-              <Lock className="w-3.5 h-3.5 text-success" /> Zero Server Transmission
+            <span className="flex items-center gap-1.5">
+              <Lock className="w-4 h-4 text-success" /> Zero Server Transmission
             </span>
           </div>
         </div>

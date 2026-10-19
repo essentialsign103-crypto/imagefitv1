@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/tools/image-compressor",
     "/tools/image-resizer",
     "/tools/image-converter",
+    "/tools/background-studio",
     "/guides",
     "/guides/reduce-image-size",
     "/guides/image-dimensions-and-aspect-ratio",

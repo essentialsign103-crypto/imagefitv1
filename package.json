@@ -8,9 +8,10 @@
     "start": "next start",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
-    "test": "node --test lib/image-processing/compressor.test.mjs lib/image-processing/resizer.test.mjs lib/image-processing/converter.test.mjs"
+    "test": "node --test lib/image-processing/compressor.test.mjs lib/image-processing/resizer.test.mjs lib/image-processing/converter.test.mjs lib/image-processing/studio.test.mjs"
   },
   "dependencies": {
+    "@huggingface/transformers": "^4.3.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.454.0",
     "next": "16.4.2",

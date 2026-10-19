@@ -348,7 +348,7 @@ export function ImageResizer() {
     : null;
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-8">
+    <div className="w-full max-w-5xl mx-auto space-y-8">
       {/* 1. File Upload / Selection Stage */}
       {!selectedImage ? (
         <div
@@ -375,7 +375,7 @@ export function ImageResizer() {
           tabIndex={0}
           role="button"
           aria-label="Upload an image to resize"
-          className={`relative rounded-3xl border-2 border-dashed p-8 sm:p-14 text-center cursor-pointer transition-all duration-300 outline-none focus-visible:ring-4 focus-visible:ring-cobalt/20 ${
+          className={`relative rounded-3xl border-2 border-dashed p-10 sm:p-16 text-center cursor-pointer transition-all duration-300 outline-none focus-visible:ring-4 focus-visible:ring-cobalt/20 ${
             isDragOver
               ? "border-cobalt bg-cobalt/5 scale-[0.99] shadow-inner"
               : "border-border hover:border-cobalt/60 hover:bg-white/60 bg-white shadow-card"
@@ -393,29 +393,29 @@ export function ImageResizer() {
             }}
           />
 
-          <div className="flex flex-col items-center justify-center space-y-4 max-w-md mx-auto">
+          <div className="flex flex-col items-center justify-center space-y-4 max-w-lg mx-auto">
             <div className="w-16 h-16 rounded-2xl bg-cobalt/10 text-cobalt flex items-center justify-center shadow-sm">
               <UploadCloud className="w-8 h-8 stroke-[2.2]" />
             </div>
 
-            <div className="space-y-1.5">
-              <p className="text-lg font-heading font-bold text-ink">
+            <div className="space-y-2">
+              <p className="text-xl sm:text-2xl font-heading font-bold text-ink">
                 Choose an image or drag & drop here
               </p>
-              <p className="text-sm text-slate">
+              <p className="text-base sm:text-lg text-slate">
                 Supports JPEG, PNG, and WebP up to {PROCESSING_LIMITS.maxFileSizeLabel}.
               </p>
             </div>
 
-            <div className="pt-2 flex flex-wrap items-center justify-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cloud text-xs font-semibold text-slate border border-border">
-                <CheckCircle2 className="w-3.5 h-3.5 text-success" /> Aspect Ratio Lock
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-2.5">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-cloud text-sm sm:text-[15px] font-semibold text-slate border border-border">
+                <CheckCircle2 className="w-4 h-4 text-success" /> Aspect Ratio Lock
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cloud text-xs font-semibold text-slate border border-border">
-                <Crop className="w-3.5 h-3.5 text-cobalt" /> Fit or Crop
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-cloud text-sm sm:text-[15px] font-semibold text-slate border border-border">
+                <Crop className="w-4 h-4 text-cobalt" /> Fit or Crop
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cloud text-xs font-semibold text-slate border border-border">
-                <ShieldCheck className="w-3.5 h-3.5 text-cobalt" /> 100% In-Browser
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-cloud text-sm sm:text-[15px] font-semibold text-slate border border-border">
+                <ShieldCheck className="w-4 h-4 text-cobalt" /> 100% In-Browser
               </span>
             </div>
           </div>
@@ -424,9 +424,9 @@ export function ImageResizer() {
         /* 2. Resizer Configuration Workspace */
         <div className="space-y-6">
           {/* File Header Bar */}
-          <div className="bg-white rounded-2xl border border-border p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 shadow-sm">
-            <div className="flex items-center gap-3.5 min-w-0">
-              <div className="w-12 h-12 rounded-xl bg-cloud border border-border flex items-center justify-center overflow-hidden shrink-0">
+          <div className="bg-white rounded-2xl border border-border p-5 sm:p-6 flex flex-wrap items-center justify-between gap-4 shadow-sm">
+            <div className="flex items-center gap-4 min-w-0">
+              <div className="w-14 h-14 rounded-xl bg-cloud border border-border flex items-center justify-center overflow-hidden shrink-0">
                 <img
                   src={selectedImage.previewUrl}
                   alt={selectedImage.name}
@@ -434,17 +434,17 @@ export function ImageResizer() {
                 />
               </div>
               <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <h3 className="font-heading font-bold text-ink text-sm sm:text-base truncate max-w-[200px] sm:max-w-xs">
+                <div className="flex items-center gap-2.5">
+                  <h3 className="font-heading font-bold text-ink text-base sm:text-lg truncate max-w-[200px] sm:max-w-xs">
                     {selectedImage.name}
                   </h3>
                   {selectedImage.hasAlpha && (
-                    <span className="px-2 py-0.5 rounded-md bg-cobalt/10 text-cobalt text-[10px] font-semibold uppercase tracking-wider">
+                    <span className="px-2 py-0.5 rounded-md bg-cobalt/10 text-cobalt text-xs sm:text-sm font-semibold uppercase tracking-wider">
                       Alpha
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-slate">
+                <p className="text-sm sm:text-base text-slate mt-0.5">
                   Original: {selectedImage.width}×{selectedImage.height}px • {formatBytes(selectedImage.sizeBytes)} • {selectedImage.type.replace("image/", "").toUpperCase()}
                 </p>
               </div>
@@ -454,36 +454,36 @@ export function ImageResizer() {
               <button
                 type="button"
                 onClick={handleReset}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border text-xs font-semibold text-slate hover:text-ink hover:bg-cloud transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-border text-sm sm:text-base font-semibold text-slate hover:text-ink hover:bg-cloud transition-colors"
               >
-                <RotateCcw className="w-3.5 h-3.5" />
+                <RotateCcw className="w-4 h-4" />
                 <span>Change Image</span>
               </button>
             </div>
           </div>
 
           {/* Configuration Form Card */}
-          <div className="bg-white rounded-3xl border border-border p-6 sm:p-8 shadow-card space-y-6 relative">
+          <div className="bg-white rounded-3xl border border-border p-7 sm:p-9 shadow-card space-y-7 relative">
             <CropCorners size={18} color="text-cobalt" />
 
-            <div className="flex items-center justify-between border-b border-border pb-4">
-              <div className="space-y-0.5">
-                <h2 className="text-lg font-heading font-bold text-ink flex items-center gap-2">
-                  <Sliders className="w-4 h-4 text-cobalt" />
+            <div className="flex items-center justify-between border-b border-border pb-5">
+              <div className="space-y-1">
+                <h2 className="text-xl sm:text-2xl font-heading font-bold text-ink flex items-center gap-2.5">
+                  <Sliders className="w-5 h-5 text-cobalt" />
                   Dimension & Format Settings
                 </h2>
-                <p className="text-xs text-slate">
+                <p className="text-[16px] sm:text-[17px] text-slate leading-[1.65]">
                   Enter target dimensions or pick a preset. Aspect ratio lock preserves original proportions.
                 </p>
               </div>
             </div>
 
             {/* Scale Presets Row */}
-            <div className="space-y-2">
-              <label className="text-xs font-bold text-ink uppercase tracking-wider">
+            <div className="space-y-2.5">
+              <label className="text-sm font-bold text-ink uppercase tracking-wider">
                 Quick Scale
               </label>
-              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2.5">
                 {RESIZER_SCALE_PRESETS.map((preset) => {
                   const isSelected = selectedScalePreset === preset.factor;
                   return (
@@ -491,7 +491,7 @@ export function ImageResizer() {
                       key={preset.label}
                       type="button"
                       onClick={() => handleScalePresetSelect(preset.factor)}
-                      className={`px-3 py-2 rounded-xl text-xs font-semibold border transition-all text-center ${
+                      className={`px-3.5 py-2.5 rounded-xl text-sm font-bold border transition-all text-center ${
                         isSelected
                           ? "border-cobalt bg-cobalt text-white shadow-sm"
                           : "border-border bg-cloud/50 hover:bg-cloud text-ink"
@@ -505,15 +505,15 @@ export function ImageResizer() {
             </div>
 
             {/* Custom Pixel Dimensions with Ratio Lock */}
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-ink uppercase tracking-wider">
+                <label className="text-sm font-bold text-ink uppercase tracking-wider">
                   Target Dimensions (Pixels)
                 </label>
                 <button
                   type="button"
                   onClick={toggleRatioLock}
-                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-colors ${
+                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors ${
                     maintainAspectRatio
                       ? "bg-cobalt/10 text-cobalt hover:bg-cobalt/20"
                       : "bg-amber-100 text-amber-800 hover:bg-amber-200"
@@ -526,12 +526,12 @@ export function ImageResizer() {
                 >
                   {maintainAspectRatio ? (
                     <>
-                      <Lock className="w-3.5 h-3.5" />
+                      <Lock className="w-4 h-4" />
                       <span>Ratio Locked</span>
                     </>
                   ) : (
                     <>
-                      <Unlock className="w-3.5 h-3.5" />
+                      <Unlock className="w-4 h-4" />
                       <span>Ratio Unlocked</span>
                     </>
                   )}
@@ -539,10 +539,10 @@ export function ImageResizer() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <div className="flex items-center justify-between text-xs text-slate">
-                    <span>Width</span>
-                    <span>px</span>
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between text-sm text-slate">
+                    <span className="font-medium">Width</span>
+                    <span className="font-mono">px</span>
                   </div>
                   <input
                     type="number"
@@ -550,14 +550,14 @@ export function ImageResizer() {
                     max={PROCESSING_LIMITS.maxDimensionPx}
                     value={targetWidth || ""}
                     onChange={(e) => handleWidthChange(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-border font-mono text-sm text-ink focus:outline-none focus:ring-2 focus:ring-cobalt/40 focus:border-cobalt bg-white"
+                    className="w-full px-4 py-3 rounded-xl border border-border font-mono text-base text-ink focus:outline-none focus:ring-2 focus:ring-cobalt/40 focus:border-cobalt bg-white"
                   />
                 </div>
 
-                <div className="space-y-1">
-                  <div className="flex items-center justify-between text-xs text-slate">
-                    <span>Height</span>
-                    <span>px</span>
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between text-sm text-slate">
+                    <span className="font-medium">Height</span>
+                    <span className="font-mono">px</span>
                   </div>
                   <input
                     type="number"
@@ -565,15 +565,15 @@ export function ImageResizer() {
                     max={PROCESSING_LIMITS.maxDimensionPx}
                     value={targetHeight || ""}
                     onChange={(e) => handleHeightChange(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-border font-mono text-sm text-ink focus:outline-none focus:ring-2 focus:ring-cobalt/40 focus:border-cobalt bg-white"
+                    className="w-full px-4 py-3 rounded-xl border border-border font-mono text-base text-ink focus:outline-none focus:ring-2 focus:ring-cobalt/40 focus:border-cobalt bg-white"
                   />
                 </div>
               </div>
 
               {/* Warning when Ratio is Unlocked */}
               {!maintainAspectRatio && (
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs">
-                  <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                <div className="flex items-start gap-3 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-sm leading-relaxed">
+                  <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                   <p>
                     <strong>Ratio Unlocked:</strong> Modifying width and height independently can stretch or distort image proportions. Choose <em>Crop (Cover)</em> below to fill exact dimensions without distortion.
                   </p>
@@ -582,8 +582,8 @@ export function ImageResizer() {
 
               {/* Warning when Upscaling */}
               {upscaleInfo.isUpscaled && (
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 text-xs">
-                  <Info className="w-4 h-4 text-cobalt shrink-0 mt-0.5" />
+                <div className="flex items-start gap-3 p-4 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 text-sm leading-relaxed">
+                  <Info className="w-5 h-5 text-cobalt shrink-0 mt-0.5" />
                   <p>
                     <strong>Upscaling Notice:</strong> Requested size exceeds original resolution ({selectedImage.width}×{selectedImage.height}px). Output will be scaled by {upscaleInfo.upscaleFactor}×, which may introduce softness.
                   </p>
@@ -592,11 +592,11 @@ export function ImageResizer() {
             </div>
 
             {/* Standard Dimension Presets */}
-            <div className="space-y-2">
-              <label className="text-xs font-bold text-ink uppercase tracking-wider">
+            <div className="space-y-2.5">
+              <label className="text-sm font-bold text-ink uppercase tracking-wider">
                 Common Presets
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                 {RESIZER_DIMENSION_PRESETS.map((p) => {
                   const isSelected = selectedDimensionPreset === p.label;
                   return (
@@ -604,14 +604,14 @@ export function ImageResizer() {
                       key={p.label}
                       type="button"
                       onClick={() => handleDimensionPresetSelect(p)}
-                      className={`p-2.5 rounded-xl border text-left transition-all ${
+                      className={`p-3 sm:p-3.5 rounded-xl border text-left transition-all ${
                         isSelected
                           ? "border-cobalt bg-cobalt/10 shadow-sm"
                           : "border-border bg-cloud/30 hover:bg-cloud"
                       }`}
                     >
-                      <div className="text-xs font-semibold text-ink">{p.label}</div>
-                      <div className="text-[11px] text-slate">{p.category}</div>
+                      <div className="text-sm font-bold text-ink">{p.label}</div>
+                      <div className="text-xs text-slate mt-0.5">{p.category}</div>
                     </button>
                   );
                 })}
@@ -619,29 +619,29 @@ export function ImageResizer() {
             </div>
 
             {/* Fit / Crop Mode Selector */}
-            <div className="space-y-2">
-              <label className="text-xs font-bold text-ink uppercase tracking-wider">
+            <div className="space-y-2.5">
+              <label className="text-sm font-bold text-ink uppercase tracking-wider">
                 Fit & Crop Behavior
               </label>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
                 <button
                   type="button"
                   onClick={() => setFitMode("contain")}
-                  className={`p-3.5 rounded-2xl border text-left transition-all ${
+                  className={`p-4 sm:p-5 rounded-2xl border text-left transition-all ${
                     fitMode === "contain"
                       ? "border-cobalt bg-cobalt/5 ring-2 ring-cobalt/30"
                       : "border-border bg-white hover:bg-cloud/50"
                   }`}
                 >
-                  <div className="flex items-center gap-2 font-bold text-sm text-ink mb-1">
+                  <div className="flex items-center gap-2 font-bold text-base sm:text-lg text-ink mb-1.5">
                     <Maximize2 className="w-4 h-4 text-cobalt" />
                     <span>Fit (Contain)</span>
                   </div>
-                  <p className="text-xs text-slate leading-relaxed">
+                  <p className="text-sm sm:text-[15px] text-slate leading-relaxed">
                     Preserves the entire original image without cropping. Output fits within the requested bounds.
                   </p>
                   {containPreview && (
-                    <div className="mt-2 text-[11px] font-mono font-medium text-cobalt">
+                    <div className="mt-2.5 text-sm font-mono font-semibold text-cobalt">
                       Result: {containPreview.width}×{containPreview.height}px
                     </div>
                   )}
@@ -650,21 +650,21 @@ export function ImageResizer() {
                 <button
                   type="button"
                   onClick={() => setFitMode("cover")}
-                  className={`p-3.5 rounded-2xl border text-left transition-all ${
+                  className={`p-4 sm:p-5 rounded-2xl border text-left transition-all ${
                     fitMode === "cover"
                       ? "border-cobalt bg-cobalt/5 ring-2 ring-cobalt/30"
                       : "border-border bg-white hover:bg-cloud/50"
                   }`}
                 >
-                  <div className="flex items-center gap-2 font-bold text-sm text-ink mb-1">
+                  <div className="flex items-center gap-2 font-bold text-base sm:text-lg text-ink mb-1.5">
                     <Crop className="w-4 h-4 text-cobalt" />
                     <span>Crop (Cover)</span>
                   </div>
-                  <p className="text-xs text-slate leading-relaxed">
+                  <p className="text-sm sm:text-[15px] text-slate leading-relaxed">
                     Fills the exact requested dimensions. Scales proportionally and crops excess edges.
                   </p>
                   {coverCropPreview && (
-                    <div className="mt-2 text-[11px] font-mono font-medium text-cobalt">
+                    <div className="mt-2.5 text-sm font-mono font-semibold text-cobalt">
                       Exact: {coverCropPreview.targetWidth}×{coverCropPreview.targetHeight}px
                     </div>
                   )}
@@ -673,20 +673,20 @@ export function ImageResizer() {
                 <button
                   type="button"
                   onClick={() => setFitMode("stretch")}
-                  className={`p-3.5 rounded-2xl border text-left transition-all ${
+                  className={`p-4 sm:p-5 rounded-2xl border text-left transition-all ${
                     fitMode === "stretch"
                       ? "border-cobalt bg-cobalt/5 ring-2 ring-cobalt/30"
                       : "border-border bg-white hover:bg-cloud/50"
                   }`}
                 >
-                  <div className="flex items-center gap-2 font-bold text-sm text-ink mb-1">
+                  <div className="flex items-center gap-2 font-bold text-base sm:text-lg text-ink mb-1.5">
                     <Layers className="w-4 h-4 text-cobalt" />
                     <span>Stretch</span>
                   </div>
-                  <p className="text-xs text-slate leading-relaxed">
+                  <p className="text-sm sm:text-[15px] text-slate leading-relaxed">
                     Forces dimensions directly to the requested values. May distort image proportions.
                   </p>
-                  <div className="mt-2 text-[11px] font-mono font-medium text-slate">
+                  <div className="mt-2.5 text-sm font-mono font-medium text-slate">
                     Exact: {targetWidth}×{targetHeight}px
                   </div>
                 </button>
@@ -695,17 +695,17 @@ export function ImageResizer() {
 
             {/* Crop Alignment Options (Shown only in cover mode) */}
             {fitMode === "cover" && (
-              <div className="space-y-2 p-3.5 rounded-2xl bg-cloud/50 border border-border">
-                <label className="text-xs font-bold text-ink uppercase tracking-wider">
+              <div className="space-y-2.5 p-4 rounded-2xl bg-cloud/50 border border-border">
+                <label className="text-sm font-bold text-ink uppercase tracking-wider">
                   Crop Position Alignment
                 </label>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2.5">
                   {(["center", "top", "bottom", "left", "right"] as CropPosition[]).map((pos) => (
                     <button
                       key={pos}
                       type="button"
                       onClick={() => setCropPosition(pos)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold capitalize border transition-all ${
+                      className={`px-3.5 py-2 rounded-xl text-sm font-semibold capitalize border transition-all ${
                         cropPosition === pos
                           ? "border-cobalt bg-cobalt text-white shadow-sm"
                           : "border-border bg-white text-slate hover:text-ink hover:bg-cloud"
@@ -715,19 +715,19 @@ export function ImageResizer() {
                     </button>
                   ))}
                 </div>
-                <p className="text-[11px] text-slate">
+                <p className="text-xs sm:text-sm text-slate">
                   Controls which portion of the image is kept when cropping excess dimensions.
                 </p>
               </div>
             )}
 
             {/* Output Format & Quality */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-border">
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-ink uppercase tracking-wider">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-3 border-t border-border">
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-ink uppercase tracking-wider">
                   Output Format
                 </label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-2.5">
                   {(["image/jpeg", "image/webp", "image/png"] as OutputFormat[]).map((fmt) => {
                     const label = fmt === "image/jpeg" ? "JPEG" : fmt === "image/webp" ? "WebP" : "PNG";
                     const isSelected = outputFormat === fmt;
@@ -736,7 +736,7 @@ export function ImageResizer() {
                         key={fmt}
                         type="button"
                         onClick={() => setOutputFormat(fmt)}
-                        className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-all ${
+                        className={`py-2.5 px-3.5 rounded-xl border text-sm font-bold transition-all ${
                           isSelected
                             ? "border-cobalt bg-cobalt text-white shadow-sm"
                             : "border-border bg-cloud/50 hover:bg-cloud text-ink"
@@ -749,17 +749,17 @@ export function ImageResizer() {
                 </div>
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-bold text-ink uppercase tracking-wider">
+                  <label className="text-sm font-bold text-ink uppercase tracking-wider">
                     Visual Quality
                   </label>
-                  <span className="text-xs font-mono font-semibold text-cobalt">
+                  <span className="text-sm font-mono font-semibold text-cobalt">
                     {outputFormat === "image/png" ? "Lossless (100%)" : `${Math.round(quality * 100)}%`}
                   </span>
                 </div>
                 {outputFormat === "image/png" ? (
-                  <div className="text-xs text-slate p-2 rounded-xl bg-cloud border border-border">
+                  <div className="text-sm text-slate p-2.5 rounded-xl bg-cloud border border-border">
                     PNG uses lossless compression. High fidelity output.
                   </div>
                 ) : (
@@ -778,8 +778,8 @@ export function ImageResizer() {
 
             {/* Transparency Note */}
             {selectedImage.hasAlpha && outputFormat === "image/jpeg" && (
-              <div className="flex items-start gap-2.5 p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs">
-                <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+              <div className="flex items-start gap-3 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-sm leading-relaxed">
+                <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                 <p>
                   <strong>Transparency Notice:</strong> Original image contains transparent areas. JPEG does not support transparency, so the background will be flattened to white. To preserve transparency, select <strong>WebP</strong> or <strong>PNG</strong>.
                 </p>
@@ -788,15 +788,15 @@ export function ImageResizer() {
 
             {/* Error Message */}
             {errorMessage && (
-              <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-danger/10 border border-danger/20 text-danger text-xs font-medium">
-                <AlertCircle className="w-4 h-4 text-danger shrink-0 mt-0.5" />
+              <div className="flex items-start gap-3 p-4 rounded-xl bg-danger/10 border border-danger/20 text-danger text-sm sm:text-base font-medium">
+                <AlertCircle className="w-5 h-5 text-danger shrink-0 mt-0.5" />
                 <p>{errorMessage}</p>
               </div>
             )}
 
             {/* Primary Action Button */}
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border">
-              <div className="text-xs text-slate flex items-center gap-1.5">
+            <div className="pt-5 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border">
+              <div className="text-sm text-slate flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-success" />
                 <span>Processed 100% locally in your browser canvas</span>
               </div>
@@ -805,7 +805,7 @@ export function ImageResizer() {
                 type="button"
                 onClick={handleRunResize}
                 disabled={isProcessing || targetWidth <= 0 || targetHeight <= 0}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-cobalt hover:bg-cobalt/90 text-white font-heading font-bold text-sm shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-cobalt hover:bg-cobalt/90 text-white font-heading font-bold text-base shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isProcessing ? (
                   <>
@@ -824,26 +824,26 @@ export function ImageResizer() {
 
           {/* 3. Result Inspection & Download Workspace */}
           {result && (
-            <div className="bg-white rounded-3xl border border-border p-6 sm:p-8 shadow-card space-y-6 relative animate-fadeIn">
+            <div className="bg-white rounded-3xl border border-border p-7 sm:p-9 shadow-card space-y-7 relative animate-fadeIn">
               <CropCorners size={18} color="text-success" />
 
-              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-4">
-                <div className="space-y-0.5">
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-success/10 text-success text-xs font-semibold">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
+              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-5">
+                <div className="space-y-1">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-success/10 text-success text-sm font-semibold">
+                    <CheckCircle2 className="w-4 h-4" />
                     <span>Resize Complete</span>
                   </div>
-                  <h3 className="text-lg font-heading font-bold text-ink">
+                  <h3 className="text-xl sm:text-2xl font-heading font-bold text-ink">
                     Generated Output Preview
                   </h3>
                 </div>
 
                 {/* View Tabs */}
-                <div className="flex items-center p-1 rounded-xl bg-cloud border border-border text-xs font-semibold">
+                <div className="flex items-center p-1 rounded-xl bg-cloud border border-border text-sm font-semibold">
                   <button
                     type="button"
                     onClick={() => setActiveTab("side-by-side")}
-                    className={`px-3 py-1.5 rounded-lg transition-colors ${
+                    className={`px-3.5 py-2 rounded-lg transition-colors ${
                       activeTab === "side-by-side"
                         ? "bg-white text-ink shadow-sm"
                         : "text-slate hover:text-ink"
@@ -854,7 +854,7 @@ export function ImageResizer() {
                   <button
                     type="button"
                     onClick={() => setActiveTab("processed")}
-                    className={`px-3 py-1.5 rounded-lg transition-colors ${
+                    className={`px-3.5 py-2 rounded-lg transition-colors ${
                       activeTab === "processed"
                         ? "bg-white text-ink shadow-sm"
                         : "text-slate hover:text-ink"
@@ -865,7 +865,7 @@ export function ImageResizer() {
                   <button
                     type="button"
                     onClick={() => setActiveTab("original")}
-                    className={`px-3 py-1.5 rounded-lg transition-colors ${
+                    className={`px-3.5 py-2 rounded-lg transition-colors ${
                       activeTab === "original"
                         ? "bg-white text-ink shadow-sm"
                         : "text-slate hover:text-ink"
@@ -878,30 +878,30 @@ export function ImageResizer() {
 
               {/* Warnings / Advice */}
               {result.warningMessage && (
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 text-xs">
-                  <Info className="w-4 h-4 text-cobalt shrink-0 mt-0.5" />
+                <div className="flex items-start gap-3 p-4 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 text-sm leading-relaxed">
+                  <Info className="w-5 h-5 text-cobalt shrink-0 mt-0.5" />
                   <p>{result.warningMessage}</p>
                 </div>
               )}
 
               {result.advice && (
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-cloud border border-border text-slate text-xs">
-                  <HelpCircle className="w-4 h-4 text-cobalt shrink-0 mt-0.5" />
+                <div className="flex items-start gap-3 p-4 rounded-xl bg-cloud border border-border text-slate text-sm leading-relaxed">
+                  <HelpCircle className="w-5 h-5 text-cobalt shrink-0 mt-0.5" />
                   <p>{result.advice}</p>
                 </div>
               )}
 
               {/* Visual Preview Container */}
-              <div className="relative rounded-2xl bg-cloud/50 border border-border p-4 overflow-hidden">
+              <div className="relative rounded-2xl bg-cloud/50 border border-border p-5 overflow-hidden">
                 {activeTab === "side-by-side" && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     {/* Original Preview */}
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-xs text-slate font-medium">
-                        <span>Original</span>
+                    <div className="space-y-2.5">
+                      <div className="flex items-center justify-between text-sm text-slate font-medium">
+                        <span className="font-semibold text-ink">Original</span>
                         <span>{result.originalWidth}×{result.originalHeight}px • {formatBytes(result.originalBytes)}</span>
                       </div>
-                      <div className="aspect-[4/3] rounded-xl bg-white border border-border flex items-center justify-center p-2 overflow-hidden">
+                      <div className="aspect-[4/3] rounded-xl bg-white border border-border flex items-center justify-center p-3 overflow-hidden">
                         <img
                           src={selectedImage.previewUrl}
                           alt="Original preview"
@@ -911,12 +911,12 @@ export function ImageResizer() {
                     </div>
 
                     {/* Resized Preview */}
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-xs text-cobalt font-semibold">
+                    <div className="space-y-2.5">
+                      <div className="flex items-center justify-between text-sm text-cobalt font-semibold">
                         <span>Resized Output</span>
                         <span>{result.outputWidth}×{result.outputHeight}px • {formatBytes(result.outputBytes)}</span>
                       </div>
-                      <div className="aspect-[4/3] rounded-xl bg-white border border-border flex items-center justify-center p-2 overflow-hidden">
+                      <div className="aspect-[4/3] rounded-xl bg-white border border-border flex items-center justify-center p-3 overflow-hidden">
                         {result.outputUrl && (
                           <img
                             src={result.outputUrl}
@@ -930,8 +930,8 @@ export function ImageResizer() {
                 )}
 
                 {activeTab === "processed" && result.outputUrl && (
-                  <div className="space-y-2 text-center">
-                    <div className="text-xs text-slate">
+                  <div className="space-y-2.5 text-center">
+                    <div className="text-sm text-slate font-medium">
                       Output: {result.outputWidth}×{result.outputHeight}px ({formatBytes(result.outputBytes)})
                     </div>
                     <div className="max-h-[480px] rounded-xl bg-white border border-border flex items-center justify-center p-4 overflow-hidden">
@@ -945,8 +945,8 @@ export function ImageResizer() {
                 )}
 
                 {activeTab === "original" && (
-                  <div className="space-y-2 text-center">
-                    <div className="text-xs text-slate">
+                  <div className="space-y-2.5 text-center">
+                    <div className="text-sm text-slate font-medium">
                       Original: {result.originalWidth}×{result.originalHeight}px ({formatBytes(result.originalBytes)})
                     </div>
                     <div className="max-h-[480px] rounded-xl bg-white border border-border flex items-center justify-center p-4 overflow-hidden">
@@ -961,42 +961,42 @@ export function ImageResizer() {
               </div>
 
               {/* Output Stats Summary Table */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div className="p-3 rounded-xl bg-cloud/50 border border-border">
-                  <div className="text-[11px] text-slate font-medium">Output Dimensions</div>
-                  <div className="text-sm font-bold font-mono text-ink mt-0.5">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div className="p-4 rounded-xl bg-cloud/50 border border-border">
+                  <div className="text-xs text-slate font-semibold uppercase tracking-wider">Output Dimensions</div>
+                  <div className="text-lg sm:text-xl font-bold font-mono text-ink mt-1">
                     {result.outputWidth}×{result.outputHeight}px
                   </div>
                 </div>
 
-                <div className="p-3 rounded-xl bg-cloud/50 border border-border">
-                  <div className="text-[11px] text-slate font-medium">Output File Size</div>
-                  <div className="text-sm font-bold font-mono text-ink mt-0.5">
+                <div className="p-4 rounded-xl bg-cloud/50 border border-border">
+                  <div className="text-xs text-slate font-semibold uppercase tracking-wider">Output File Size</div>
+                  <div className="text-lg sm:text-xl font-bold font-mono text-ink mt-1">
                     {formatBytes(result.outputBytes)}
                   </div>
                 </div>
 
-                <div className="p-3 rounded-xl bg-cloud/50 border border-border">
-                  <div className="text-[11px] text-slate font-medium">Output Format</div>
-                  <div className="text-sm font-bold font-mono text-ink mt-0.5 uppercase">
+                <div className="p-4 rounded-xl bg-cloud/50 border border-border">
+                  <div className="text-xs text-slate font-semibold uppercase tracking-wider">Output Format</div>
+                  <div className="text-lg sm:text-xl font-bold font-mono text-ink mt-1 uppercase">
                     {result.outputMimeType.replace("image/", "")}
                   </div>
                 </div>
 
-                <div className="p-3 rounded-xl bg-cloud/50 border border-border">
-                  <div className="text-[11px] text-slate font-medium">Fit Mode Used</div>
-                  <div className="text-sm font-bold font-mono text-ink mt-0.5 capitalize">
+                <div className="p-4 rounded-xl bg-cloud/50 border border-border">
+                  <div className="text-xs text-slate font-semibold uppercase tracking-wider">Fit Mode Used</div>
+                  <div className="text-lg sm:text-xl font-bold font-mono text-ink mt-1 capitalize">
                     {result.fitModeUsed}
                   </div>
                 </div>
               </div>
 
               {/* Download Bar */}
-              <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border">
+              <div className="pt-5 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border">
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-border text-xs font-semibold text-slate hover:text-ink hover:bg-cloud transition-colors"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl border border-border text-sm font-semibold text-slate hover:text-ink hover:bg-cloud transition-colors"
                 >
                   Resize Another Image
                 </button>
@@ -1004,9 +1004,9 @@ export function ImageResizer() {
                 <button
                   type="button"
                   onClick={handleDownload}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-cobalt hover:bg-cobalt/90 text-white font-heading font-bold text-sm shadow-md transition-all"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-cobalt hover:bg-cobalt/90 text-white font-heading font-bold text-base shadow-md transition-all"
                 >
-                  <Download className="w-4 h-4" />
+                  <Download className="w-5 h-5" />
                   <span>Download Resized Image</span>
                 </button>
               </div>
