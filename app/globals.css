@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ink: #15233B;
+  --color-cobalt: #4463F5;
+  --color-lime: #C9F36A;
+  --color-cloud: #F5F7FB;
+  --color-white: #FFFFFF;
+  --color-slate: #657084;
+  --color-border: #E2E7F0;
+  --color-border-strong: #CBD3E1;
+  --color-success: #16815D;
+  --color-warning: #B86D11;
+  --color-error: #C43D4B;
+  --color-info: #316CB5;
+
+  --font-heading: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Additive Dark Theme - isolated to html.dark (preserves light theme 100%) */
+html.dark {
+  --color-ink: #F5F7FB;
+  --color-cloud: #0C1322;
+  --color-white: #15233B;
+  --color-slate: #94A3B8;
+  --color-border: #1E2D4A;
+  --color-border-strong: #2D3F63;
+}
+
+html.dark body {
+  background-color: var(--color-cloud);
+  color: var(--color-ink);
+}
+
+/* Dark mode card and surface overrides */
+html.dark .bg-ink {
+  background-color: #15233B !important;
+}
+
+html.dark .bg-lime,
+html.dark .bg-lime.text-ink,
+html.dark .bg-lime .text-ink {
+  color: #15233B !important;
+}
+
+html.dark .bg-white {
+  background-color: #15233B !important;
+}
+
+html.dark .bg-white\/90 {
+  background-color: rgba(21, 35, 59, 0.9) !important;
+}
+
+html.dark .bg-white\/95 {
+  background-color: rgba(21, 35, 59, 0.95) !important;
+}
+
+html.dark .bg-white\/80 {
+  background-color: rgba(21, 35, 59, 0.8) !important;
+}
+
+html.dark .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark .bg-cloud {
+  background-color: #0C1322 !important;
+}
+
+html.dark .bg-cloud\/50 {
+  background-color: rgba(12, 19, 34, 0.5) !important;
+}
+
+html.dark .bg-cloud\/60 {
+  background-color: rgba(12, 19, 34, 0.6) !important;
+}
+
+html.dark .bg-cloud\/80 {
+  background-color: rgba(12, 19, 34, 0.8) !important;
+}
+
+html.dark .bg-success-light {
+  background-color: rgba(22, 129, 93, 0.18) !important;
+  color: #4ADE80 !important;
+}
+
+html.dark .bg-cobalt-light {
+  background-color: rgba(68, 99, 245, 0.18) !important;
+}
+
+html.dark .bg-error-light {
+  background-color: rgba(196, 61, 75, 0.18) !important;
+  color: #F87171 !important;
+}
+
+html.dark .bg-warning-light {
+  background-color: rgba(184, 109, 17, 0.18) !important;
+  color: #FBBF24 !important;
+}
+
+html.dark .bg-info-light {
+  background-color: rgba(49, 108, 181, 0.18) !important;
+}
+
+html.dark .shadow-card {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.35), 0 4px 12px 0 rgba(0, 0, 0, 0.25) !important;
+}
+
+html.dark .shadow-elevated {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.45), 0 10px 24px -3px rgba(0, 0, 0, 0.55) !important;
+}
+
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #0C1322;
+  color: #F5F7FB;
+  border-color: #1E2D4A;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748B;
+}
+
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--color-cloud);
+    color: var(--color-ink);
+    font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Tabular Numerals for file sizes, dimensions, percentages */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Precision Crop Corner Motif Accents */
+.crop-bracket-tl {
+  border-top: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+}
+.crop-bracket-tr {
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+.crop-bracket-bl {
+  border-bottom: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+}
+.crop-bracket-br {
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-cobalt);
+  outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transform: none !important;
+  }
+}
