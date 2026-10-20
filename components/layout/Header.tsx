@@ -30,12 +30,12 @@ export function Header() {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: "Compress", href: "/tools/image-compressor", badge: "Target Size" },
+    { label: "Compress", href: "/tools/image-compressor" },
     { label: "Resize", href: "/tools/image-resizer" },
     { label: "Convert", href: "/tools/image-converter" },
     { label: "Studio", href: "/tools/background-studio", badge: "AI" },
     { label: "Guides", href: "/guides" },
-    { label: "Upgrade", href: "/upgrade", badge: "Preview" },
+    { label: "Upgrade", href: "/upgrade" },
     { label: "About", href: "/about" },
   ];
 
@@ -43,18 +43,18 @@ export function Header() {
     <header className="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-border transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand Logo */}
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4 lg:gap-6 xl:gap-8">
           <ImageFitLogo />
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1" aria-label="Main Navigation">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3.5 py-2 text-base font-medium rounded-md transition-colors relative flex items-center gap-1.5 ${
+                  className={`px-2.5 xl:px-3.5 py-1.5 xl:py-2 text-sm xl:text-base font-medium rounded-md transition-colors relative flex items-center gap-1.5 ${
                     isActive
                       ? "text-cobalt bg-cobalt/5 font-semibold"
                       : "text-slate hover:text-ink hover:bg-cloud"
@@ -79,18 +79,18 @@ export function Header() {
 
           {/* Privacy badge */}
           <div
-            className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-semibold rounded-full bg-success-light text-success border border-success/20"
+            className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 text-sm font-semibold rounded-full bg-success-light text-success border border-success/20 whitespace-nowrap shrink-0 min-w-max w-auto"
             title="All image files are processed locally in your browser memory"
           >
-            <ShieldCheck className="w-4 h-4 text-success" />
-            <span>Local Browser Processing</span>
+            <ShieldCheck className="w-4 h-4 text-success shrink-0" />
+            <span className="whitespace-nowrap">Local Browser Processing</span>
           </div>
 
           {/* Mobile menu button */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-slate hover:text-ink hover:bg-cloud focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
+            className="lg:hidden inline-flex items-center justify-center p-2 rounded-lg text-slate hover:text-ink hover:bg-cloud focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle navigation menu"
           >
@@ -101,7 +101,7 @@ export function Header() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-border bg-white px-4 pt-2 pb-6 space-y-2 animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="lg:hidden border-b border-border bg-white px-4 pt-2 pb-6 space-y-2 animate-in fade-in slide-in-from-top-2 duration-150">
           <div className="flex items-center justify-between gap-2 p-3 rounded-xl bg-cloud text-sm text-slate mb-3">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-success flex-shrink-0" />
